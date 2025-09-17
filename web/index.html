@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Universal Declaration of Human Dignity and Mutual Flourishing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+            min-height: 100vh;
+        }
+
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-selector label {
+            display: block;
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+
+        .language-selector select {
+            padding: 8px 12px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            min-width: 150px;
+        }
+
+        .language-selector select:hover {
+            border-color: #adb5bd;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .translation-note {
+            background: #f0f9ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.95em;
+            color: #1e40af;
+        }
+
+        .translation-note a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px solid #60a5fa;
+        }
+
+        .translation-note a:hover {
+            color: #1d4ed8;
+            border-bottom-color: #3730a3;
+        }
+        
+        .historical-context {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #dee2e6;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #495057;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #dee2e6;
+        }
+        
+        .timeline-item.highlight::before {
+            background: #e63946;
+            width: 16px;
+            height: 16px;
+            left: -36px;
+            top: 3px;
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-text {
+            color: #6c757d;
+            font-size: 0.95em;
+        }
+        
+        .quote-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-left: 4px solid #e63946;
+            border-radius: 4px;
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.1em;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+        
+        .quote-attribution {
+            text-align: right;
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .declaration-box {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        
+        .declaration-title {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+            font-weight: normal;
+        }
+        
+        .preamble {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 4px;
+        }
+        
+        .article {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .article:last-child {
+            border-bottom: none;
+        }
+        
+        .article-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        .article-text {
+            line-height: 1.8;
+            color: #495057;
+        }
+        
+        .context-intro {
+            font-size: 1.15em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #495057;
+        }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #dee2e6;
+            color: #6c757d;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .historical-context, .declaration-box {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .language-selector {
+                top: 10px;
+                right: 10px;
+                padding: 8px;
+            }
+
+            .language-selector select {
+                min-width: 120px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <label for="language-select">Language / Idioma / 语言</label>
+        <select id="language-select" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="zh">中文</option>
+            <option value="hi">हिन्दी</option>
+            <option value="ar">العربية</option>
+            <option value="bn">বাংলা</option>
+            <option value="pt">Português</option>
+            <option value="ru">Русский</option>
+            <option value="ja">日本語</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div class="historical-context">
+            <h1>The Evolution of Human Rights</h1>
+            
+            <div class="context-intro">
+                Throughout history, moments of profound crisis and transformation have compelled humanity to declare its highest aspirations. Each declaration reflects its time while reaching toward timeless truths. Today, facing ecological collapse, persistent inequality, and global interdependence, we require a new articulation of old truths.
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1776</div>
+                    <div class="timeline-text">The American Declaration of Independence proclaims that "all men are created equal" with unalienable rights, launching the age of democratic revolutions, yet leaving enslaved peoples and women unrecognized.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1789</div>
+                    <div class="timeline-text">The French Declaration of the Rights of Man and of the Citizen universalizes the concept of natural rights, declaring them valid "at all times and in every place", while France maintains its colonial empire.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1948</div>
+                    <div class="timeline-text">The UN Universal Declaration of Human Rights, born from the ashes of World War II, expands rights to include economic and social dimensions, yet struggles with enforcement and cultural universality.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1992</div>
+                    <div class="timeline-text">The Rio Declaration on Environment and Development recognizes that human rights and environmental protection are inseparable, but lacks binding power as climate change accelerates.</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2007</div>
+                    <div class="timeline-text">The UN Declaration on the Rights of Indigenous Peoples affirms collective rights and relationships to land, after centuries of dispossession and cultural destruction.</div>
+                </div>
+                
+                <div class="timeline-item highlight">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-text">A Universal Declaration of Human Dignity and Mutual Flourishing emerges, attempting to bridge individual and collective rights, acknowledge historical injuries, embrace cultural pluralism, and recognize our obligations to future generations and the living Earth.</div>
+                </div>
+            </div>
+            
+            <div class="quote-section">
+                <div class="quote">
+                    "The same stream of life that runs through my veins night and day runs through the world and dances in rhythmic measure."
+                </div>
+                <div class="quote-attribution">— Rabindranath Tagore, Gitanjali (Song Offerings), poem 69</div>
+            </div>
+        </div>
+        
+        <div class="declaration-box">
+            <h2 class="declaration-title">A Universal Declaration of Human Dignity<br>and Mutual Flourishing</h2>
+            
+            <div class="preamble">
+                When peoples must say again who we are, one human family within a living world, respect for humanity asks that we declare the principles by which we mean to stand: justice without exception, peace without pretense, and a future in which all can flourish.
+            </div>
+            
+            <div class="article">
+                <div class="article-title">Article I — On Dignity</div>
+                <div class="article-text">All human beings are born with inherent dignity. This dignity is not granted by the state, the market, or the crowd; it is native to the person and alive in relation, to family, to community, to the Earth that sustains us.</div>
+            </div>
+            
+            <div class="article">
+                <div class="article-title">Article II — On Rights and Responsibilities</div>
+                <div class="article-text">Dignity speaks in two voices. In one, it claims rights: to live with worth, to speak and to choose, to be secure in body and livelihood, to participate in the decisions that shape one's days, to practice culture and spirit without fear, to seek wellbeing in harmony with others and with nature, to be heard when wronged and made whole. In the other, it accepts responsibilities: to oneself in honesty, to one's community in good faith, to future generations in stewardship, and to the living Earth in restraint and care.</div>
+            </div>
+            
+            <div class="article">
+                <div class="article-title">Article III — On Freedom and Belonging</div>
+                <div class="article-text">Human flourishing needs both. Freedom gives the room to become; belonging gives the ground to stand. Autonomy without solidarity corrodes into indifference; solidarity without autonomy hardens into control. We choose both: the liberty to forge a path, and the bonds that make us safe enough to try.</div>
+            </div>
+            
+            <div class="article">
+                <div class="article-title">Article IV — On Governance</div>
+                <div class="article-text">Legitimate governance draws its authority from the consent and participation of the governed, from its proven ability to safeguard dignity and ecological balance, from accountability to the present and to those not yet born, and from respect for plural ways of living well. When a system becomes hostile to these ends, when oppression, exploitation, or ecological ruin become its habit, it is the right and duty of the people to reform it or replace it.</div>
+            </div>
+            
+            <div class="article">
+                <div class="article-title">Article V — On History and Repair</div>
+                <div class="article-text">We speak plainly: the modern world stands atop injuries, colonial theft, slavery, genocide, and systematic exclusion. Recognition is not enough. We commit to repair: to address inherited inequalities, to honor Indigenous stewardship and relationships with land, to return what was taken and restore self-determination, to shape economies that serve people and planet rather than extraction and discard.</div>
+            </div>
+            
+            <div class="article">
+                <div class="article-title">Article VI — On Future Generations</div>
+                <div class="article-text">We hold ourselves answerable to those who cannot yet answer us. We pledge a thriving, biodiverse planet; institutions that endure without exploitation; the preservation and sharing of knowledge and culture; foundations for peace rather than cycles of grievance; proof in practice that different peoples can live with mutual respect.</div>
+            </div>
+            
+            <div class="article">
+                <div class="article-title">Article VII — On Security and Power</div>
+                <div class="article-text">True security is built, not imposed. It grows from trust, mutual aid, and just institutions, never from domination. Power is to be bounded by law, chastened by transparency, and repurposed toward common good.</div>
+            </div>
+            
+            <div class="article">
+                <div class="article-title">Article VIII — On Difference</div>
+                <div class="article-text">Difference is not a threat but a strength. Diversity of thought, culture, and approach enlarges the possible. Unity need not mean uniformity; concord need not mean silence. We will disagree without demeaning, deliberate without dehumanizing, and cooperate where conscience permits.</div>
+            </div>
+            
+            <div class="article">
+                <div class="article-title">Article IX — On Universality and Practice</div>
+                <div class="article-text">These principles are universal in spirit and particular in practice. No single model of governance or economy will fit every place or people. Each community must translate dignity into local institutions. Exchange across cultures is a gift, not a demand; wisdom is shared, not imposed.</div>
+            </div>
+            
+            <div class="article">
+                <div class="article-title">Article X — The Pledge</div>
+                <div class="article-text">We therefore commit, to the dignity of every person without remainder, to the healing of historical wounds, to the protection of our shared home, and to the building of systems in which all can flourish. We invite all peoples to join, not as followers of one path, but as companions in the hard, hopeful work ahead.</div>
+            </div>
+            
+            <div class="footer-note">
+                This declaration stands not as an end but as a beginning, one voice in an ongoing conversation about how humanity might live with dignity, justice, and care for the world we share.
+            </div>
+
+            <div class="translation-note">
+                <strong>🌍 Translations Available:</strong> This declaration has been translated into Spanish, Mandarin, Hindi, Arabic, Bengali, Portuguese, Russian, Japanese, French, and German.
+                <a href="https://github.com/universal-declaration/human-dignity/tree/main/translations" target="_blank">View all translations</a> or
+                <a href="https://github.com/universal-declaration/human-dignity/blob/main/CONTRIBUTING.md" target="_blank">contribute your own translation</a>.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeLanguage(lang) {
+            const translations = {
+                'en': 'index.html',
+                'es': 'https://github.com/universal-declaration/human-dignity/blob/main/translations/es-ES.md',
+                'zh': 'https://github.com/universal-declaration/human-dignity/blob/main/translations/zh-CN.md',
+                'hi': 'https://github.com/universal-declaration/human-dignity/blob/main/translations/hi-IN.md',
+                'ar': 'https://github.com/universal-declaration/human-dignity/blob/main/translations/ar-SA.md',
+                'bn': 'https://github.com/universal-declaration/human-dignity/blob/main/translations/bn-BD.md',
+                'pt': 'https://github.com/universal-declaration/human-dignity/blob/main/translations/pt-BR.md',
+                'ru': 'https://github.com/universal-declaration/human-dignity/blob/main/translations/ru-RU.md',
+                'ja': 'https://github.com/universal-declaration/human-dignity/blob/main/translations/ja-JP.md',
+                'fr': 'https://github.com/universal-declaration/human-dignity/blob/main/translations/fr-FR.md',
+                'de': 'https://github.com/universal-declaration/human-dignity/blob/main/translations/de-DE.md'
+            };
+
+            if (lang === 'en') {
+                // Stay on current page for English
+                return;
+            }
+
+            // Navigate to GitHub for other languages
+            if (translations[lang]) {
+                window.open(translations[lang], '_blank');
+            }
+        }
+    </script>
+</body>
+</html>
