@@ -50,7 +50,7 @@ universal-declaration/
 ├── /historical-context/     # The historical progression and influences
 ├── /discussions/           # Ongoing dialogues about specific articles
 ├── /adaptations/           # Local/regional interpretations
-└── /web/                   # HTML presentation
+└── /docs/                   # HTML presentation
 ```
 
 ## Quick Start
