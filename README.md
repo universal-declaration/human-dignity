@@ -139,8 +139,7 @@ This declaration builds on centuries of struggle and wisdom from countless commu
 - Decolonial critiques of imposed universalism
 
 ## License
-
-This work is dedicated to the global commons. Use, adapt, and share freely, with attribution to the collective effort rather than any individual.
+This work is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
 ---
 
